@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#08090d" />
+  <title>SECRETO ESMO</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08090d;--panel:#111117;--red:#ff3b38;--rsoft:#972b2d;--red-dark:#270e13;--ink:#d4c4bf;--mute:#927b80;--blue:#268dfb}
+    *{box-sizing:border-box}
+    html{min-height:100%;scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;background:radial-gradient(ellipse 75% 42% at 50% -8%,#2b121c 0%,transparent 80%),radial-gradient(circle at 15% 90%,#100e1b 0%,transparent 50%),#08090d;color:var(--ink);font-family:Consolas,'Courier New',monospace;overflow-x:hidden}
+    body:before{content:"";pointer-events:none;position:fixed;inset:0;opacity:.20;background:linear-gradient(transparent 98%,#37313a 100%) 0 0 / 100% 4px,repeating-linear-gradient(90deg,transparent 0 24px,#19171e 25px 26px);z-index:2}
+    body:after{content:"";pointer-events:none;position:fixed;inset:0;box-shadow:inset 0 0 120px #000c;z-index:3}
+    button{font-family:inherit;cursor:pointer}
+    [hidden]{display:none!important}
+    .cover{min-height:100svh;display:grid;place-items:center;padding:22px}
+    .frame{position:relative;border:2px solid #5c252f;background:linear-gradient(145deg,#14141b,#0b0b11 70%);box-shadow:inset 0 0 0 4px #090a0f,inset 0 0 0 5px #3e222c,0 22px 64px #0009;isolation:isolate}
+    .frame:before,.frame:after{content:"";position:absolute;width:52px;height:52px;pointer-events:none;z-index:1;border:3px double #b74955}
+    .frame:before{left:9px;top:9px;border-right:0;border-bottom:0;border-radius:28px 0 0 0}
+    .frame:after{right:9px;bottom:9px;border-top:0;border-left:0;border-radius:0 0 28px 0}
+    .cover-inner{text-align:center;padding:clamp(42px,8vw,90px) clamp(22px,8vw,84px);width:min(96vw,800px)}
+    .eyebrow{color:#b7545b;letter-spacing:.35em;font-size:clamp(10px,2vw,13px);text-transform:uppercase;margin:0 0 25px}
+    h1{font-size:clamp(34px,8vw,80px);line-height:1.05;letter-spacing:.07em;color:#e7d8d4;margin:0;text-shadow:4px 4px 0 #5b1c27,0 0 34px #bd3d3726;font-weight:900}
+    .dash{width:70px;height:4px;margin:31px auto;background:var(--red);box-shadow:0 0 18px var(--red)}
+    .cover-copy{font-size:clamp(12px,2.4vw,15px);color:#b99ba1;letter-spacing:.10em;line-height:1.9;margin:0 auto 34px;max-width:420px}
+    .pixel-button{border:0;border-radius:1px;color:#eaf4ff;background:linear-gradient(#64b3ff 0 13%,#2e92fd 13% 75%,#1760bb 75% 100%);font-size:clamp(17px,3.5vw,22px);font-weight:900;letter-spacing:.16em;padding:19px 30px;min-width:220px;text-shadow:0 2px 0 #204c89;box-shadow:0 0 0 3px #040910,0 0 0 7px #1656a8,0 9px 0 7px #10294f,0 15px 30px #2377e536;transition:transform .12s,box-shadow .12s}
+    .pixel-button:hover{filter:brightness(1.12)}.pixel-button:active{transform:translateY(7px);box-shadow:0 0 0 3px #040910,0 0 0 7px #1656a8,0 2px 0 7px #10294f}
+    .note{margin:29px 0 0;color:#776b75;font-size:10px;letter-spacing:.13em}
+    .app{max-width:1170px;margin:auto;padding:clamp(14px,3vw,32px) clamp(12px,3vw,28px) 60px}
+    .hero{padding:38px clamp(18px,4vw,50px);margin-bottom:26px;text-align:center}
+    .line1{letter-spacing:.35em;color:#c14e55;font-size:11px;margin:0 0 17px}
+    .hero h2{font-size:clamp(20px,4.1vw,39px);color:#e7d8d4;line-height:1.35;letter-spacing:.045em;margin:0 auto;max-width:770px;text-shadow:0 0 22px #cc343330}
+    .hero-sub{font-size:12px;color:#836f76;margin:20px 0 0;letter-spacing:.06em}
+    .settings{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:17px 0 26px;flex-wrap:wrap}
+    .settings span{color:#8d686d;font-size:12px;letter-spacing:.1em}
+    .mini-button{background:#111721;color:#6eaef7;border:2px solid #244a77;box-shadow:3px 3px 0 #051323;padding:9px 12px;font-weight:700;font-size:11px;letter-spacing:.09em}
+    .timer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .timer-card{position:relative;min-width:0;padding:25px 18px 24px;border:2px solid #4f2029;background:radial-gradient(ellipse at top,#22131b,#0f1016 75%);box-shadow:inset 0 0 0 3px #0a0a0f,inset 0 0 0 4px #4e2630,5px 8px 0 #030306;overflow:hidden}
+    .timer-card:before,.timer-card:after{content:"";position:absolute;width:21px;height:21px;pointer-events:none;border:2px solid #b1434e;opacity:.7}
+    .timer-card:before{top:8px;left:8px;border-right:0;border-bottom:0;border-radius:13px 0 0 0}
+    .timer-card:after{right:8px;bottom:8px;border-left:0;border-top:0;border-radius:0 0 13px 0}
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:20px}
+    .card-id{font-size:12px;color:#bb7377;letter-spacing:.16em;font-weight:900}
+    .state{font-size:9px;letter-spacing:.10em;color:#97868c;text-align:right}
+    .state.done{color:#ff6d64}
+    .digits{display:flex;justify-content:center;align-items:center;gap:2px;filter:drop-shadow(0 0 5px #e91f2040);margin:0 auto 18px;min-height:56px}
+    .seven{position:relative;width:23px;height:42px;flex:0 0 23px}
+    .segment{position:absolute;background:#48161c;opacity:.34;clip-path:polygon(18% 0,82% 0,100% 25%,100% 75%,82% 100%,18% 100%,0 75%,0 25%)}
+    .segment.on{opacity:1;background:#ff3b31;box-shadow:0 0 12px #e02727;filter:drop-shadow(0 0 4px #ff4b30)}
+    .segment.h{width:16px;height:4px;left:4px}.segment.v{width:4px;height:16px}
+    .segment.a{top:0}.segment.g{top:19px}.segment.d{bottom:0}
+    .segment.f{top:3px;left:0}.segment.b{top:3px;right:0}.segment.e{bottom:3px;left:0}.segment.c{bottom:3px;right:0}
+    .colon{width:8px;flex:0 0 8px;height:42px;position:relative}
+    .colon:before,.colon:after{content:"";position:absolute;background:#ff4138;box-shadow:0 0 9px #f73435;width:4px;height:4px;left:2px}
+    .colon:before{top:12px}.colon:after{bottom:12px}
+    .tease{min-height:62px;display:grid;place-content:center;padding:12px;background:#080a0e;border:1px solid #44252c;text-align:center;color:#99878b;line-height:1.6;font-size:12px;letter-spacing:.025em;overflow-wrap:anywhere}
+    .tease.locked{color:#675e65;letter-spacing:.15em}
+    .tease.revealed{color:#f0d9d2;border-color:#ad373d;background:linear-gradient(125deg,#180e13,#100c10);box-shadow:0 0 17px #e7332820, inset 0 0 14px #e02c2118;animation:unlock .6s ease-out}
+    @keyframes unlock{from{filter:brightness(2);transform:scale(.97)}to{filter:brightness(1);transform:scale(1)}}
+    .final{margin-top:22px;padding:clamp(23px,4vw,42px) clamp(13px,4vw,42px)}
+    .final-head{text-align:center}
+    .final-head .card-id{font-size:14px}.final .digits{margin-top:20px}
+    .final-explain{text-align:center;color:#a18b91;font-size:12px;line-height:1.7;margin:16px 0 20px}
+    .name-row{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(3px,1vw,12px);width:100%;margin-top:19px}
+    .letter{aspect-ratio:3/4;min-width:0;border:2px solid #6b252c;background:linear-gradient(#1b1017,#08090f);box-shadow:inset 0 0 0 2px #09090d,0 4px 0 #080607;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(5px,1.5vw,16px);position:relative}
+    .letter:before,.letter:after{content:"";position:absolute;width:6px;height:6px;border:1px solid #80303b}.letter:before{top:3px;left:3px;border-right:0;border-bottom:0}.letter:after{bottom:3px;right:3px;border-left:0;border-top:0}
+    .letter small{color:#b55b5e;font-size:clamp(7px,1.7vw,12px)}
+    .letter strong{font-weight:900;font-size:clamp(17px,5vw,48px);line-height:1;color:#512128;text-shadow:none;letter-spacing:0}
+    .letter.on{border-color:#d34647;box-shadow:inset 0 0 18px #94282927,0 0 10px #ef343336}
+    .letter.on strong{color:#ff3c35;text-shadow:0 0 8px #f43836,0 0 22px #ef342d77}
+    .letter.on{animation:unlock .4s ease-out}
+    .final-status{text-align:center;color:#bf7377;font-size:12px;letter-spacing:.09em;margin:20px 0 0}
+    .foot{text-align:center;color:#675a64;font-size:10px;letter-spacing:.15em;padding:28px 4px 0}
+    .demo-tools{margin:15px auto;max-width:340px;text-align:center;color:#eaaeab;font-size:12px}.demo-tools button{margin-top:10px}
+    @media(max-width:980px){.timer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:610px){.timer-grid{grid-template-columns:1fr;gap:14px}.hero{padding:37px 22px}.timer-card{padding:24px 15px}.name-row{gap:3px}.letter{border-width:1px}.letter strong{font-size:clamp(17px,5.6vw,29px)}.letter small{font-size:8px}.final{padding:24px 10px}.digits{transform:scale(.95)}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <section class="cover" id="cover">
+    <div class="frame cover-inner">
+      <p class="eyebrow">// archivo confidencial //</p>
+      <h1>SECRETO<br>ESMO</h1>
+      <div class="dash"></div>
+      <p class="cover-copy">Diez archivos cifrados.<br>Una pista al día.<br>El secreto no tiene firma.</p>
+      <button class="pixel-button" id="enter" type="button">ENTRAR</button>
+      <p class="note">PRESIONA PARA ACTIVAR EL SONIDO</p>
+    </div>
+  </section>
+
+  <main class="app" id="app" hidden>
+    <section class="frame hero">
+      <p class="line1">// TRANSMISIÓN INICIADA //</p>
+      <h2>Cada segundo, un paso más cerca de descubrir quién soy.</h2>
+      <p class="hero-sub">Una pista por día. Ninguna revelará directamente el nombre.</p>
+    </section>
+    <div class="settings"><span id="progress">ARCHIVOS DESBLOQUEADOS: 00 / 10</span><button id="sound" class="mini-button" type="button" aria-pressed="true">SONIDO: ACTIVADO</button></div>
+    <section class="timer-grid" id="timers" aria-label="Nueve pistas con cuenta regresiva diaria"></section>
+    <section class="timer-card final" id="final">
+      <div class="final-head"><span class="card-id">ARCHIVO 10 · ÚLTIMA PISTA</span><div class="state" id="final-state">BLOQUEADO</div></div>
+      <div class="digits" id="final-display" role="timer" aria-label="Cuenta regresiva para desbloquear la última pista"></div>
+      <p class="final-explain" id="final-copy">El último archivo se activará al completarse los 10 días.</p>
+      <div class="name-row" id="name-row" aria-label="Ocho caracteres por descubrir"></div>
+      <p class="final-status" id="final-status">8 CARACTERES OCULTOS</p>
+    </section>
+    <section id="demo-tools" class="demo-tools" hidden><p>VERSIÓN DE PRUEBA: 10 días convertidos a 30 segundos.</p><button class="mini-button" id="reset" type="button">REINICIAR PRUEBA</button></section>
+    <footer class="foot">// EL TIEMPO REVELARÁ LO QUE FALTA //</footer>
+  </main>
+  <script>
+  (function(){
+    'use strict';
+    const TEST_MODE = false;
+    const ONE_MINUTE = 60 * 1000;
+    const ONE_HOUR = 60 * ONE_MINUTE;
+    const DURATIONS = TEST_MODE ? [3,6,9,12,15,18,21,24,27,30].map(n=>n*1000) : [1,2,3,4,5,6,7,8,9,10].map(n=>n*24*ONE_HOUR);
+    const LETTER_INTERVAL = TEST_MODE ? 1000 : ONE_MINUTE;
+    const LETTERS = ['A','D','I','V','I','N','A','?'];
+    const CLUES = [
+      'Sé que te gusta Diego del 2G...',
+      'No tienes que responder nada. Esto es solo un misterio.',
+      'El papel que recibiste esconde más de lo que parece.',
+      'El QR fue apenas el principio.',
+      'Hay preguntas que se hacen sin hablar.',
+      'A veces dos miradas se cruzan y nadie dice una palabra.',
+      'Hay detalles que se descubren fuera de una pantalla.',
+      'Sé que tienes un QR que casi nadie conoce.',
+      'No voy a escribir mi nombre. La última pista será una pregunta.'
+    ];
+    const STORE_KEY = TEST_MODE ? 'secreto-esmo-demo-10dias-v1' : 'secreto-esmo-real-10dias-v1';
+    const safeStore={getItem(k){try{return window.localStorage.getItem(k)}catch(e){return window.__esmoFallback||null}},setItem(k,v){try{window.localStorage.setItem(k,v)}catch(e){window.__esmoFallback=v}},removeItem(k){try{window.localStorage.removeItem(k)}catch(e){window.__esmoFallback=null}}};
+    const $ = sel => document.querySelector(sel);
+    let startedAt=null, entered=false, soundsOn=true, audioCtx=null,lastSoundSecond=-1,intervalId=null;
+    const MAP = {'0':'abcdef','1':'bc','2':'abged','3':'abgcd','4':'fgbc','5':'afgcd','6':'afgecd','7':'abc','8':'abcdefg','9':'abfgcd'};
+    function createDigit(n){const d=document.createElement('span');d.className='seven';d.setAttribute('aria-hidden','true');for(const [seg,axis] of [['a','h'],['b','v'],['c','v'],['d','h'],['e','v'],['f','v'],['g','h']]){const s=document.createElement('i');s.className='segment '+axis+' '+seg+(MAP[n].includes(seg)?' on':'');d.append(s)}return d}
+    function setDisplay(el,text){if(el.dataset.lastText===text)return;el.dataset.lastText=text;el.replaceChildren();for(const c of text){if(c===':'){const colon=document.createElement('span');colon.className='colon';el.append(colon)}else el.append(createDigit(c))}}
+    function formatTime(ms){let seconds=Math.max(0,Math.ceil(ms/1000));const h=Math.floor(seconds/3600);seconds%=3600;const m=Math.floor(seconds/60);const s=seconds%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+    function beep(freq=890,vol=.027,duration=.045){if(!soundsOn)return;try{if(!audioCtx)return;if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});const now=audioCtx.currentTime;const oscillator=audioCtx.createOscillator();const gain=audioCtx.createGain();oscillator.type='square';oscillator.frequency.setValueAtTime(freq,now);gain.gain.setValueAtTime(vol,now);gain.gain.exponentialRampToValueAtTime(.001,now+duration);oscillator.connect(gain);gain.connect(audioCtx.destination);oscillator.start(now);oscillator.stop(now+duration+.01)}catch(e){/* audio permissions vary by browser */}}
+    function armAudio(){try{const AudioCtor=window.AudioContext||window.webkitAudioContext;if(AudioCtor)audioCtx=audioCtx||new AudioCtor();if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});}catch(e){}}
+    function makeCards(){for(let i=0;i<9;i++){const card=document.createElement('article');card.className='timer-card';card.innerHTML='<div class="card-top"><span class="card-id">ARCHIVO '+String(i+1).padStart(2,'0')+'</span><span class="state">BLOQUEADO</span></div><div class="digits" role="timer"></div><div class="tease locked" aria-live="polite">[ PISTA CIFRADA ]</div>';card.dataset.i=i;$('#timers').append(card)}for(let i=0;i<8;i++){const div=document.createElement('div');div.className='letter';div.innerHTML='<small>'+String(i+1).padStart(2,'0')+'</small><strong>·</strong>';div.dataset.i=i;$('#name-row').append(div)}}
+    function tick(){if(startedAt===null)return;const now=Date.now(),elapsed=Math.max(0,now-startedAt);let complete=0;const cards=$('#timers').children;for(let i=0;i<9;i++){const remaining=DURATIONS[i]-elapsed;const card=cards[i],state=card.querySelector('.state'),tease=card.querySelector('.tease');setDisplay(card.querySelector('.digits'),formatTime(remaining));if(remaining<=0){complete++;state.textContent='DESBLOQUEADO';state.classList.add('done');tease.className='tease revealed';if(tease.textContent!==CLUES[i])tease.textContent=CLUES[i];}else{state.textContent='BLOQUEADO';state.classList.remove('done');tease.className='tease locked';if(tease.textContent!=='[ PISTA CIFRADA ]')tease.textContent='[ PISTA CIFRADA ]'}}const remaining=DURATIONS[9]-elapsed;setDisplay($('#final-display'),formatTime(remaining));const isFinal=remaining<=0;if(isFinal){complete++;$('#final-state').textContent='EN PROCESO';$('#final-state').classList.add('done');$('#final-copy').textContent='La última palabra se revela, un carácter cada '+(TEST_MODE?'segundo.':'minuto.');}else{$('#final-state').textContent='BLOQUEADO';$('#final-copy').textContent=TEST_MODE?'El último archivo se desbloqueará al terminar la prueba.':'El último archivo se activará al completarse los 10 días.'}const revealElapsed=elapsed-DURATIONS[9];const revealed=isFinal?Math.min(8,Math.floor(revealElapsed/LETTER_INTERVAL)):0;for(let i=0;i<8;i++){const box=$('#name-row').children[i],isOn=i<revealed;box.classList.toggle('on',isOn);box.querySelector('strong').textContent=isOn?LETTERS[i]:'·'}$('#final-status').textContent=revealed===8?'ÚLTIMA PISTA REVELADA':(isFinal?revealed+' / 8 CARACTERES REVELADOS':'8 CARACTERES OCULTOS');if(revealed===8)$('#final-state').textContent='DESBLOQUEADO';$('#progress').textContent='ARCHIVOS DESBLOQUEADOS: '+String(complete).padStart(2,'0')+' / 10';if(entered&&soundsOn&&document.visibilityState==='visible'&&revealed<8){const second=Math.floor(now/1000);if(second!==lastSoundSecond){lastSoundSecond=second;beep()}}}
+    function enter(){armAudio();soundsOn=true;$('#sound').textContent='SONIDO: ACTIVADO';$('#sound').setAttribute('aria-pressed','true');beep(990,.06,.11);const stored=safeStore.getItem(STORE_KEY);const parsed=stored?Number(stored):NaN;startedAt=Number.isFinite(parsed)&&parsed>0?parsed:Date.now();if(!Number.isFinite(parsed)||parsed<=0)safeStore.setItem(STORE_KEY,String(startedAt));entered=true;$('#cover').hidden=true;$('#app').hidden=false;window.scrollTo(0,0);tick();if(intervalId)clearInterval(intervalId);intervalId=setInterval(tick,240)}
+    makeCards();$('#enter').addEventListener('click',enter);$('#sound').addEventListener('click',()=>{soundsOn=!soundsOn;$('#sound').textContent='SONIDO: '+(soundsOn?'ACTIVADO':'SILENCIADO');$('#sound').setAttribute('aria-pressed',String(soundsOn));if(soundsOn){armAudio();beep(1050,.05,.10)}});
+    if(TEST_MODE){$('#demo-tools').hidden=false;$('#reset').addEventListener('click',()=>{safeStore.removeItem(STORE_KEY);startedAt=Date.now();safeStore.setItem(STORE_KEY,String(startedAt));lastSoundSecond=-1;tick()})}
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&entered){lastSoundSecond=Math.floor(Date.now()/1000);tick()}});
+  })();
+  </script>
+</body>
+</html>
