@@ -76,6 +76,7 @@
     @media(max-width:980px){.timer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:610px){.timer-grid{grid-template-columns:1fr;gap:14px}.hero{padding:37px 22px}.timer-card{padding:24px 15px}.name-row{gap:3px}.letter{border-width:1px}.letter strong{font-size:clamp(17px,5.6vw,29px)}.letter small{font-size:8px}.final{padding:24px 10px}.digits{transform:scale(.95)}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+      .clarification{margin:24px auto 0;max-width:720px;padding:15px 18px;text-align:center;color:#c8adb0;background:#100f15;border:1px solid #602530;line-height:1.65;font-size:clamp(12px,2vw,15px)} .clarification strong{color:#ff7777;letter-spacing:.06em}
   </style>
 </head>
 <body>
@@ -95,6 +96,7 @@
       <p class="line1">// TRANSMISIÓN INICIADA //</p>
       <h2>Cada segundo, un paso más cerca de descubrir quién soy.</h2>
       <p class="hero-sub">Una pista por día. Ninguna revelará directamente el nombre.</p>
+      <p class="clarification"><strong>UNA ACLARACIÓN:</strong> Esto no es una declaración de amor ni una invitación. No busco nada romántico contigo. Hoy me pareció que mi ex me hizo ojitos y me di cuenta de que todavía la extraño.</p>
     </section>
     <div class="settings"><span id="progress">ARCHIVOS DESBLOQUEADOS: 00 / 10</span><button id="sound" class="mini-button" type="button" aria-pressed="true">SONIDO: ACTIVADO</button></div>
     <section class="timer-grid" id="timers" aria-label="Nueve pistas con cuenta regresiva diaria"></section>
@@ -118,7 +120,7 @@
     const LETTER_INTERVAL = TEST_MODE ? 1000 : ONE_MINUTE;
     const LETTERS = ['A','D','I','V','I','N','A','?'];
     const CLUES = [
-      'Sé que te gusta Diego del 2G...',
+      'Sé que te gusta Daniel del 2G...',
       'No tienes que responder nada. Esto es solo un misterio.',
       'El papel que recibiste esconde más de lo que parece.',
       'El QR fue apenas el principio.',
